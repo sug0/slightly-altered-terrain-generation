@@ -19,8 +19,6 @@ public abstract class OverworldChunkGeneratorMixin extends SurfaceChunkGenerator
 	@Shadow @Final private boolean amplified;
 	@Shadow @Final private static float[] BIOME_WEIGHT_TABLE;
 
-	private SimplexNoiseSampler simplexSampler;
-
 	public OverworldChunkGeneratorMixin(IWorld world, BiomeSource biomeSource, int verticalNoiseResolution, int horizontalNoiseResolution, int worldHeight, OverworldChunkGeneratorConfig config, boolean useSimplexNoise)
 	{
 		super(world, biomeSource, verticalNoiseResolution, horizontalNoiseResolution, worldHeight, config, useSimplexNoise);
@@ -30,12 +28,6 @@ public abstract class OverworldChunkGeneratorMixin extends SurfaceChunkGenerator
 	@Overwrite
 	public double[] computeNoiseRange(int x, int z)
 	{
-		if(simplexSampler == null)
-		{
-			this.random.consume(2620);
-			this.simplexSampler = new SimplexNoiseSampler(this.random);
-		}
-
 		double[] noiseRange = new double[2];
 		float f = 0.0F;
 		float g = 0.0F;
