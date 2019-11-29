@@ -42,14 +42,14 @@ public abstract class OverworldChunkGeneratorMixin extends SurfaceChunkGenerator
 		float h = 0.0F;
 		int seaLevel = this.getSeaLevel();
 
-		Biome baseBiome = this.biomeSource.getBiomeForNoiseGen(x, z);
+		Biome baseBiome = this.biomeSource.getBiomeForNoiseGen(x, seaLevel, z);
 		float baseDepth = baseBiome.getDepth();
 		if(!keepBiomeProportions(baseBiome))
 			baseDepth /= 2;
 
 		for(int xOffset = -2; xOffset <= 2; ++xOffset) {
 			for(int zOffset = -2; zOffset <= 2; ++zOffset) {
-				Biome biome = this.biomeSource.getBiomeForNoiseGen(x + xOffset, z + zOffset);
+				Biome biome = this.biomeSource.getBiomeForNoiseGen(x + xOffset, seaLevel,z + zOffset);
 
 				float originalDepth = keepBiomeProportions(biome) ? biome.getDepth() : getAdjustedDepth(biome, x, z, xOffset, zOffset);
 				float depth = originalDepth;
@@ -86,7 +86,7 @@ public abstract class OverworldChunkGeneratorMixin extends SurfaceChunkGenerator
 		if(keepBiomeProportions(biome))
 			return biome.getDepth();
 
-		Biome stealBiome = this.biomeSource.getBiomeForNoiseGen(x + xOffset + 99999, z + zOffset + 99999);
+		Biome stealBiome = this.biomeSource.getBiomeForNoiseGen(x + xOffset + 99999, getSeaLevel(), z + zOffset + 99999);
 		return keepBiomeProportions(stealBiome) ? biome.getDepth() : stealBiome.getDepth();
 	}
 
@@ -95,7 +95,7 @@ public abstract class OverworldChunkGeneratorMixin extends SurfaceChunkGenerator
 		if(keepBiomeProportions(biome))
 			return biome.getDepth();
 
-		Biome stealBiome = this.biomeSource.getBiomeForNoiseGen(x + xOffset + 99999, z + zOffset + 99999);
+		Biome stealBiome = this.biomeSource.getBiomeForNoiseGen(x + xOffset + 99999, getSeaLevel(),z + zOffset + 99999);
 		if(keepBiomeProportions(stealBiome))
 			return biome.getScale();
 		else
