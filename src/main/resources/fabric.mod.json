@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "slightly-altered-terrain-generation",
+  "version": "${version}",
+
+  "name": "Slightly Altered Terrain Generation",
+  "description": "Slightly alters terrain generation to give more height variety.",
+  "authors": [
+    "Lemons"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Lemonszz/slightly-altered-terrain-generation",
+    "sources": "https://github.com/Lemonszz/slightly-altered-terrain-generation"
+  },
+
+  "license": "MIT",
+  "icon": "assets/slightly-altered-terrain-generation/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "party.lemons.satg.SATG"
+    ]
+  },
+  "mixins": [
+    "satg.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*",
+    "minecraft": "1.14.x"
+  }
+}

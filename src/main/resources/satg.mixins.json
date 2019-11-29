@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "party.lemons.satg.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "OverworldChunkGeneratorMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
