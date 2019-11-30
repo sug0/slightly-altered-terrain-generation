@@ -85,7 +85,7 @@ public abstract class OverworldChunkGeneratorMixin extends SurfaceChunkGenerator
 	public float getAdjustedScale(Biome biome, int x, int z, int xOffset, int zOffset)
 	{
 		if(keepBiomeProportions(biome))
-			return biome.getDepth();
+			return biome.getScale();
 
 		Biome stealBiome = this.biomeSource.getBiomeForNoiseGen(x + xOffset + 99999, getSeaLevel(),z + zOffset + 99999);
 		if(keepBiomeProportions(stealBiome))
